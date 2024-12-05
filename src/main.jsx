@@ -10,6 +10,7 @@ import Layout from './Components/Layout.jsx';
 import Home from './Components/Home.jsx';
 import AddVisa from './Components/AddVisa.jsx';
 import AllVisa from './Components/AllVisa.jsx';
+import VisaDetails from './Components/VisaDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
         path: '/allVisa',
         element:<AllVisa></AllVisa>,
         loader: ()=> fetch('http://localhost:5000/visa')
+      },
+      {
+        path:'/visaDetails/:id',
+        element: <VisaDetails></VisaDetails>,
+        loader: ({params})=> fetch(`http://localhost:5000/visa/${params.id}`)
       }
     ]
   },

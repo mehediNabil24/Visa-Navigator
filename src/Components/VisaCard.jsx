@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 const VisaCard = ({visa}) => {
 
     const {
+        _id,
         image,
         countryName,
         visaType,
@@ -30,7 +31,7 @@ const VisaCard = ({visa}) => {
           </h2>
           <p>{description}</p>
           <div className="card-actions justify-end">
-            <NavLink className={'btn' } to={'/visaDetils'}>Visa Details</NavLink>
+            <NavLink  className={'btn' } to={`/visaDetails/${_id}`}>Visa Details</NavLink>
             
           </div>
         </div>
