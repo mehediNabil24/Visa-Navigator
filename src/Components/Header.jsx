@@ -1,13 +1,17 @@
 import { NavLink } from "react-router-dom";
+import logo from '../assets/logo.png';
 
 
 const Header = () => {
     const links =
     <>
         <li><NavLink to={'/'}>Home</NavLink></li>
+        <li><NavLink to={'/allVisa'}>All Visas</NavLink></li>
         <li><NavLink to={'/addVisa'}>Add Visa</NavLink></li>
         <li><NavLink to={'/signIn'}>Sign in</NavLink></li>
-        <li><NavLink to={'/users'}>Users</NavLink></li>
+        <li><NavLink to={'/myVisa'}>My Added Visas</NavLink></li>
+        <li><NavLink to={'/myVisaApplication'}>My Visa Application</NavLink></li>
+
 
     </>
 
@@ -37,7 +41,7 @@ const Header = () => {
         }
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <img className="rounded-full w-[65px]" src={logo} alt="" />
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className=" menu menu-horizontal  px-1">

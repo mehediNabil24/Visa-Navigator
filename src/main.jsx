@@ -9,6 +9,7 @@ import {
 import Layout from './Components/Layout.jsx';
 import Home from './Components/Home.jsx';
 import AddVisa from './Components/AddVisa.jsx';
+import AllVisa from './Components/AllVisa.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path:'/addVisa',
         element: <AddVisa></AddVisa>
 
+      },
+      {
+        path: '/allVisa',
+        element:<AllVisa></AllVisa>,
+        loader: ()=> fetch('http://localhost:5000/visa')
       }
     ]
   },

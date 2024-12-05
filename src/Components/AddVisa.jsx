@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddVisa = () => {
     const handleSubmit =e=>{
@@ -30,6 +31,26 @@ const AddVisa = () => {
             applicationMethod
         };
         console.log(newVisa);
+
+        fetch('http://localhost:5000/visa',{
+            method: "POST",
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(newVisa)
+        })
+        .then(res=> res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Do you want to continue',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+        })
     }
     return (
         <div className="bg-blue-200 p-24">
