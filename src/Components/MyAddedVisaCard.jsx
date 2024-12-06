@@ -1,4 +1,6 @@
+import { getAuth } from 'firebase/auth';
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const MyAddedVisaCard = ({visa}) => {
     const {
@@ -17,6 +19,11 @@ const MyAddedVisaCard = ({visa}) => {
 
       const handleSubmit =e=>{
         e.preventDefault();
+
+        const auth =getAuth()
+        const user= auth?.currentUser
+
+        const createdBy = user.email
         
 
 
@@ -50,6 +57,27 @@ const MyAddedVisaCard = ({visa}) => {
         applicationMethod
       }
       console.log(updateVisa)
+      fetch(`http://localhost:5000/visa/email/${createdBy}`,{
+        method:'PUT',
+        headers: {
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(updateVisa)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log('data',data)
+        if(data.matchedCount>0){
+            Swal.fire({
+                title: 'Success!',
+                text: 'Do you want to continue',
+                icon: 'Update',
+                confirmButtonText: 'Cool'
+              })
+        }
+      })
+
+
       const modal = document.getElementById("my_modal_5");
       modal.close();
     }
