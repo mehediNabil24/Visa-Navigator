@@ -1,9 +1,14 @@
+import { getAuth } from 'firebase/auth';
 import React from 'react';
 import Swal from 'sweetalert2';
 
 const AddVisa = () => {
     const handleSubmit =e=>{
         e.preventDefault();
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+
         const form = e.target;
         const image = form.image.value;
         const countryName = form.countryName.value;
@@ -28,7 +33,9 @@ const AddVisa = () => {
             ageRestriction,
             fee,
             validity,
-            applicationMethod
+            applicationMethod,
+            createdBy: user.email,
+            createdAt: new Date().toISOString()
         };
         console.log(newVisa);
 

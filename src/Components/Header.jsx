@@ -1,14 +1,18 @@
 import { NavLink } from "react-router-dom";
 import logo from '../assets/logo.png';
+import { useContext } from "react";
+import { AuthContext } from "./AuthProvider";
+import { FaUserLarge } from "react-icons/fa6";
 
 
 const Header = () => {
+    const {user,logOut} = useContext(AuthContext)
     const links =
     <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allVisa'}>All Visas</NavLink></li>
         <li><NavLink to={'/addVisa'}>Add Visa</NavLink></li>
-        <li><NavLink to={'/signIn'}>Sign in</NavLink></li>
+        
         <li><NavLink to={'/myVisa'}>My Added Visas</NavLink></li>
         <li><NavLink to={'/myVisaApplication'}>My Visa Application</NavLink></li>
 
@@ -52,7 +56,29 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+  < div className='flex items-center justify-center gap-2'>
+            <div>
+                {
+                    user?.email? <div className='flex flex-col items-center justify-center mr-2 '>
+                        <p>{user.displayName}</p>
+                        <img className='w-[50px] h-[50px] rounded-full' src={user.photoURL} alt="" />
+                    </div>:<FaUserLarge className='text-2xl'></FaUserLarge>
+                }
+            </div>
+
+            <div>
+            {
+                user?( <button onClick={logOut} className ='btn btn-neutral'>Log out</button>):  (<NavLink to={'/login'} className='btn btn-neutral'>Log in </NavLink>)
+            }
+            
+
+            </div>
+
+          
+                
+               
+
+            </div>
   </div>
 </div>
     );

@@ -11,6 +11,11 @@ import Home from './Components/Home.jsx';
 import AddVisa from './Components/AddVisa.jsx';
 import AllVisa from './Components/AllVisa.jsx';
 import VisaDetails from './Components/VisaDetails.jsx';
+import UserVisaList from './Components/UserVisaList.jsx';
+import AuthProvider from './Components/AuthProvider.jsx';
+import Login from './Components/Login.jsx';
+import Register from './Components/Register.jsx';
+import PrivateRoutes from './Components/PrivateRoutes.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,12 +24,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ()=> fetch('http://localhost:5000/visa')
 
       },
       {
         path:'/addVisa',
-        element: <AddVisa></AddVisa>
+        element: <PrivateRoutes><AddVisa></AddVisa></PrivateRoutes>
 
       },
       {
@@ -36,6 +42,19 @@ const router = createBrowserRouter([
         path:'/visaDetails/:id',
         element: <VisaDetails></VisaDetails>,
         loader: ({params})=> fetch(`http://localhost:5000/visa/${params.id}`)
+      },
+      {
+        path:'/userVisaList',
+        element: <UserVisaList></UserVisaList>
+
+      },
+      {
+        path:'/login',
+        element: <Login></Login>
+      },
+      {
+        path:'/register',
+        element: <Register></Register>
       }
     ]
   },
@@ -43,6 +62,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider><RouterProvider router={router} /></AuthProvider>
   </StrictMode>,
 )
