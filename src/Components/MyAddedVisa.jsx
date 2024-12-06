@@ -9,7 +9,7 @@ const MyAddedVisa = () => {
     return (
         <div className='grid md:grid-cols-3 grid-cols-2 gap-8'>
             {
-                visas.map(visa=><MyAddedVisaCard key={visa._id} visa={visa}></MyAddedVisaCard>)
+                visas.map(visa=><MyAddedVisaCard visas={visas} setvisas={setvisas} key={visa._id} visa={visa}></MyAddedVisaCard>)
             }
             
         </div>

@@ -2,7 +2,9 @@ import { getAuth } from 'firebase/auth';
 import React from 'react';
 import Swal from 'sweetalert2';
 
-const MyAddedVisaCard = ({visa}) => {
+const MyAddedVisaCard = ({visas, visa,setvisas}) => {
+    
+   
     const {
         _id,
         image,
@@ -77,10 +79,52 @@ const MyAddedVisaCard = ({visa}) => {
         }
       })
 
+    
+
 
       const modal = document.getElementById("my_modal_5");
       modal.close();
     }
+
+    
+
+    const handleDelete = id =>{
+       
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              fetch(`http://localhost:5000/visa/${_id}`, {
+                method: "DELETE",
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log(data);
+                  if (data.deletedCount > 0) {
+                    Swal.fire({
+                      title: "Deleted!",
+                      text: "Your file has been deleted.",
+                      icon: "success",
+                    });
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error deleting coffee:", error);
+                });
+                const remaining = visas.filter(cof=> cof._id !== _id);
+                  setvisas(remaining);
+                
+            }
+          });
+
+    }
+   
     return (
         <div className="card bg-base-100 w-96 shadow-xl">
         <figure>
@@ -94,7 +138,7 @@ const MyAddedVisaCard = ({visa}) => {
           <p>{description}</p>
           <div className="card-actions justify-end">
             <button onClick={() => document.getElementById("my_modal_5").showModal() } className='btn btn-accent' >Update</button>
-            <button className='btn btn-warning'>Delete</button>
+            <button onClick={()=>handleDelete(_id)} className='btn btn-warning'>Delete</button>
           </div>
           <dialog
             id="my_modal_5"
