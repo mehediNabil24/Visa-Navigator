@@ -11,11 +11,12 @@ import Home from './Components/Home.jsx';
 import AddVisa from './Components/AddVisa.jsx';
 import AllVisa from './Components/AllVisa.jsx';
 import VisaDetails from './Components/VisaDetails.jsx';
-import UserVisaList from './Components/UserVisaList.jsx';
+
 import AuthProvider from './Components/AuthProvider.jsx';
 import Login from './Components/Login.jsx';
 import Register from './Components/Register.jsx';
 import PrivateRoutes from './Components/PrivateRoutes.jsx';
+import MyAddedVisa from './Components/MyAddedVisa.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,11 +44,7 @@ const router = createBrowserRouter([
         element: <VisaDetails></VisaDetails>,
         loader: ({params})=> fetch(`http://localhost:5000/visa/${params.id}`)
       },
-      {
-        path:'/userVisaList',
-        element: <UserVisaList></UserVisaList>
-
-      },
+    
       {
         path:'/login',
         element: <Login></Login>
@@ -55,6 +52,11 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element: <Register></Register>
+      },
+      {
+        path: '/myAddedVisa/:createdBy',
+        element: <MyAddedVisa></MyAddedVisa>,
+        loader:({params})=> fetch(`http://localhost:5000/visa/email/${params.createdBy}`)
       }
     ]
   },

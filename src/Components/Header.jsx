@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import logo from '../assets/logo.png';
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
@@ -7,13 +7,17 @@ import { FaUserLarge } from "react-icons/fa6";
 
 const Header = () => {
     const {user,logOut} = useContext(AuthContext)
+
+    const createdBy = user?.email;
+    
+   console.log(user)
     const links =
     <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allVisa'}>All Visas</NavLink></li>
         <li><NavLink to={'/addVisa'}>Add Visa</NavLink></li>
         
-        <li><NavLink to={'/myVisa'}>My Added Visas</NavLink></li>
+        <li><NavLink to={`/myAddedVisa/${createdBy}`}>My Added Visas</NavLink></li>
         <li><NavLink to={'/myVisaApplication'}>My Visa Application</NavLink></li>
 
 

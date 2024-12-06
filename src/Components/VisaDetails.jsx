@@ -4,13 +4,13 @@ import { useLoaderData, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const VisaDetails = () => {
-    const auth = getAuth();
-        const user = auth.currentUser;
+  const auth = getAuth();
+  const user = auth?.currentUser;
   const visa = useLoaderData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const form = e.target;
     const email = form.email.value;
     const firstName = form.firstName.value;
@@ -18,31 +18,44 @@ const VisaDetails = () => {
     const appliedDate = form.appliedDate.value;
     const fee = form.fee.value;
 
-    const newUser = { email, firstName, lastName, appliedDate, fee, image:image,countryName:countryName,visaType:visaType,processingTime:processingTime,validity:validity,applicationMethod:applicationMethod,name:firstName+ ' '+ lastName  };
-    fetch('http://localhost:5000/users',{
-        method: "POST",
-        headers: {
-            'content-type':'application/json'
-        },
-        body: JSON.stringify(newUser)
+    const newUser = {
+      email,
+      firstName,
+      lastName,
+      appliedDate,
+      fee,
+      image: image,
+      countryName: countryName,
+      visaType: visaType,
+      processingTime: processingTime,
+      validity: validity,
+      applicationMethod: applicationMethod,
+      name: firstName + " " + lastName,
+    };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
     })
-    .then(res=> res.json())
-    .then(data=>{
-        console.log(data)
-        if(data.insertedId){
-            Swal.fire({
-                title: 'Success!',
-                text: 'Do you want to continue',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-              })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Do you want to continue",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
         }
-    })
+      });
 
     console.log("newUser", newUser);
 
     // Close the modal after submission
-    document.getElementById('my_modal_5').close();
+    document.getElementById("my_modal_5").close();
   };
 
   const {
@@ -69,16 +82,27 @@ const VisaDetails = () => {
         />
         <h2 className="text-3xl font-bold mt-4">{countryName}</h2>
         <div className="text-right">
-          <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_5').showModal()}>
+          <button
+            className="btn btn-primary"
+            onClick={() => document.getElementById("my_modal_5").showModal()}
+          >
             Apply for Visa
           </button>
-          <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+          <dialog
+            id="my_modal_5"
+            className="modal modal-bottom sm:modal-middle"
+          >
             <div className="modal-box">
               <div className="modal-action">
                 <form onSubmit={handleSubmit}>
                   {/* Email field */}
                   <div className="mb-4">
-                    <label htmlFor="email" className="block text-lg font-medium mb-1">Email:</label>
+                    <label
+                      htmlFor="email"
+                      className="block text-lg font-medium mb-1"
+                    >
+                      Email:
+                    </label>
                     <input
                       type="email"
                       id="email"
@@ -91,7 +115,12 @@ const VisaDetails = () => {
 
                   {/* First Name field */}
                   <div className="mb-4">
-                    <label htmlFor="firstName" className="block text-lg font-medium mb-1">First Name:</label>
+                    <label
+                      htmlFor="firstName"
+                      className="block text-lg font-medium mb-1"
+                    >
+                      First Name:
+                    </label>
                     <input
                       type="text"
                       id="firstName"
@@ -103,7 +132,12 @@ const VisaDetails = () => {
 
                   {/* Last Name field */}
                   <div className="mb-4">
-                    <label htmlFor="lastName" className="block text-lg font-medium mb-1">Last Name:</label>
+                    <label
+                      htmlFor="lastName"
+                      className="block text-lg font-medium mb-1"
+                    >
+                      Last Name:
+                    </label>
                     <input
                       type="text"
                       id="lastName"
@@ -115,7 +149,12 @@ const VisaDetails = () => {
 
                   {/* Applied Date field */}
                   <div className="mb-4">
-                    <label htmlFor="appliedDate" className="block text-lg font-medium mb-1">Applied Date:</label>
+                    <label
+                      htmlFor="appliedDate"
+                      className="block text-lg font-medium mb-1"
+                    >
+                      Applied Date:
+                    </label>
                     <input
                       type="text"
                       id="appliedDate"
@@ -126,7 +165,9 @@ const VisaDetails = () => {
 
                   {/* Fee field */}
                   <div className="mb-4">
-                    <label className="block text-lg font-medium mb-1">Visa Fee:</label>
+                    <label className="block text-lg font-medium mb-1">
+                      Visa Fee:
+                    </label>
                     <input
                       type="text"
                       id="fee"
@@ -134,7 +175,6 @@ const VisaDetails = () => {
                       readOnly
                       value={fee}
                       className="w-full p-2 border border-gray-300 rounded"
-                     
                     />
                   </div>
 
@@ -154,10 +194,12 @@ const VisaDetails = () => {
 
       <div className="mt-6 space-y-4">
         <div>
-          <strong className="text-lg">Visa Type:</strong> <span>{visaType}</span>
+          <strong className="text-lg">Visa Type:</strong>{" "}
+          <span>{visaType}</span>
         </div>
         <div>
-          <strong className="text-lg">Processing Time:</strong> <span>{processingTime}</span>
+          <strong className="text-lg">Processing Time:</strong>{" "}
+          <span>{processingTime}</span>
         </div>
         <div>
           <strong className="text-lg">Required Documents:</strong>
@@ -172,7 +214,8 @@ const VisaDetails = () => {
           <p>{description}</p>
         </div>
         <div>
-          <strong className="text-lg">Age Restriction:</strong> <span>{ageRestriction}</span>
+          <strong className="text-lg">Age Restriction:</strong>{" "}
+          <span>{ageRestriction}</span>
         </div>
         <div>
           <strong className="text-lg">Fee:</strong> <span>${fee}</span>

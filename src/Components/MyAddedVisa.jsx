@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import VisaCard from './VisaCard';
+import MyAddedVisaCard from './MyAddedVisaCard';
 
 const MyAddedVisa = () => {
+    const loadedVisas = useLoaderData();
+    const [visas,setvisas] = useState(loadedVisas)
     return (
-        <div>
+        <div className='grid md:grid-cols-3 grid-cols-2 gap-8'>
+            {
+                visas.map(visa=><MyAddedVisaCard key={visa._id} visa={visa}></MyAddedVisaCard>)
+            }
             
         </div>
     );
