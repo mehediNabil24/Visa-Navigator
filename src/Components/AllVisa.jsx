@@ -6,8 +6,8 @@ const AllVisa = () => {
     const loadedVisa = useLoaderData();
     const [visas, setVisas] = useState(loadedVisa);
     return (
-        <div>
-            <div className='grid md:grid-cols-4 grid-cols-2 gap-10'>
+        <div >
+            <div className='grid md:grid-cols-4 grid-cols-2 gap-5'>
                 {
                     visas.map(visa=> <VisaCard key={visa._id} visa={visa} ></VisaCard>)
                 }

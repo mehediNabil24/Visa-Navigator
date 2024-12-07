@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
-import { useLoaderData } from 'react-router-dom';
+import { NavLink, useLoaderData } from 'react-router-dom';
 import VisaCard from './VisaCard';
 
 const Home = () => {
@@ -18,14 +18,18 @@ const Home = () => {
     return (
         <div>
             <Banner />
-            <div className='grid md:grid-cols-4 grid-cols-2 gap-10'>
+            <div className='grid md:grid-cols-3 grid-cols-2 gap-6 my-8'>
                 {
                     // Display the latest 4 visas
-                    sortedVisas.slice(0, 4).map(visa => (
+                    sortedVisas.slice(0, 6).map(visa => (
                         <VisaCard key={visa._id} visa={visa} />
                     ))
                 }
+                
             </div>
+            <div className='flex items-center justify-center'>
+                <NavLink to={'/allVisa'} className={'btn btn-success '}>See All Visas</NavLink>
+                </div>
         </div>
     );
 };

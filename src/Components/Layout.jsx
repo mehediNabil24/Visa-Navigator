@@ -5,8 +5,9 @@ import { Outlet } from 'react-router-dom';
 const Layout = () => {
     return (
         <div>
-            <Header></Header>
-            <Outlet></Outlet>
+            <section className='w-11/12 mx-auto' ><Header></Header></section>
+            <section className='w-11/12 mx-auto'><Outlet></Outlet></section>
+            
             
         </div>
     );
