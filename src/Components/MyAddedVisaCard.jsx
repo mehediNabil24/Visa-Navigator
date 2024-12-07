@@ -22,10 +22,10 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
       const handleSubmit =e=>{
         e.preventDefault();
 
-        const auth =getAuth()
-        const user= auth?.currentUser
+        // const auth =getAuth()
+        // const user= auth?.currentUser
 
-        const createdBy = user.email
+        // const createdBy = user.email
         
 
 
@@ -59,7 +59,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
         applicationMethod
       }
       console.log(updateVisa)
-      fetch(`http://localhost:5000/visa/email/${createdBy}`,{
+      fetch(`http://localhost:5000/visa/${_id}`,{
         method:'PUT',
         headers: {
             'content-type':'application/json'
@@ -82,7 +82,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
     
 
 
-      const modal = document.getElementById("my_modal_5");
+      const modal = document.getElementById(_id);
       modal.close();
     }
 
@@ -123,7 +123,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
             }
           });
 
-    }
+        }
    
     return (
         <div className="card bg-base-100 w-96 shadow-xl">
@@ -137,14 +137,14 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
           </h2>
           <p>{description}</p>
           <div className="card-actions justify-end">
-            <button onClick={() => document.getElementById("my_modal_5").showModal() } className='btn btn-accent' >Update</button>
+            <button onClick={() => document.getElementById(_id).showModal() } className='btn btn-accent' >Update</button>
             <button onClick={()=>handleDelete(_id)} className='btn btn-warning'>Delete</button>
           </div>
           <dialog
-            id="my_modal_5"
+            id={_id}
             className="modal modal-bottom sm:modal-middle"
             onClick={(e) => {
-                const dialog = document.getElementById('my_modal_5');
+                const dialog = document.getElementById(_id);
                 if (e.target === dialog) {
                   dialog.close(); // Close the modal if clicking outside of the modal content
                 }

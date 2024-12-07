@@ -56,12 +56,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/myAddedVisa/:createdBy',
-        element: <MyAddedVisa></MyAddedVisa>,
+        element: <PrivateRoutes><MyAddedVisa></MyAddedVisa></PrivateRoutes>,
         loader:({params})=> fetch(`http://localhost:5000/visa/email/${params.createdBy}`)
       },
       {
         path: 'myApplication/:email',
-        element: <MyApplication></MyApplication>,
+        element: <PrivateRoutes><MyApplication></MyApplication></PrivateRoutes>,
         loader: ({params})=> fetch(`http://localhost:5000/users/${params.email}`)
       }
     ]

@@ -60,7 +60,7 @@ const AddVisa = () => {
         })
     }
     return (
-        <div className="bg-blue-200 p-24">
+        <div className="bg-gray-200 p-24">
             <h2 className="font-bold text-3xl">Add a Visa</h2>
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Country Image and Name */}

@@ -62,7 +62,7 @@ const ApplicationCard = ({visa, visas,setvisas}) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-          {countryName}
+          {countryName || 'unknown country'}
           <div className="badge badge-neutral">{visaType}</div>
         </h2>
         <div className='flex gap-2 items-center'>

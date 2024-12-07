@@ -5,6 +5,7 @@ import ApplicationCard from './ApplicationCard';
 const MyApplication = () => {
     const loadedVisas =useLoaderData();
     const [visas,setvisas] =useState(loadedVisas)
+    console.log("Error finding",visas)
     return (
         <div className='grid grid-cols-3 gap-6'>
             {
