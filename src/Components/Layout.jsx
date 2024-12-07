@@ -2,9 +2,7 @@ import React from 'react';
 import Header from './Header';
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
-import TypeWriter from './TypeWriter';
-import ReactAwosome from './ReactAwosome';
-import Animation from './Animation';
+
 
 const Layout = () => {
     return (
