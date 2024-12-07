@@ -9,6 +9,7 @@ const Header = () => {
     const {user,logOut} = useContext(AuthContext)
 
     const createdBy = user?.email;
+    const email = user?.email;
     
    console.log(user)
     const links =
@@ -18,7 +19,7 @@ const Header = () => {
         <li><NavLink to={'/addVisa'}>Add Visa</NavLink></li>
         
         <li><NavLink to={`/myAddedVisa/${createdBy}`}>My Added Visas</NavLink></li>
-        <li><NavLink to={'/myVisaApplication'}>My Visa Application</NavLink></li>
+        <li><NavLink to={`/myApplication/${email}`}>My Visa Application</NavLink></li>
 
 
     </>

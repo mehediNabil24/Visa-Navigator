@@ -17,6 +17,7 @@ import Login from './Components/Login.jsx';
 import Register from './Components/Register.jsx';
 import PrivateRoutes from './Components/PrivateRoutes.jsx';
 import MyAddedVisa from './Components/MyAddedVisa.jsx';
+import MyApplication from './Components/MyApplication.jsx';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
         path: '/myAddedVisa/:createdBy',
         element: <MyAddedVisa></MyAddedVisa>,
         loader:({params})=> fetch(`http://localhost:5000/visa/email/${params.createdBy}`)
+      },
+      {
+        path: 'myApplication/:email',
+        element: <MyApplication></MyApplication>,
+        loader: ({params})=> fetch(`http://localhost:5000/users/${params.email}`)
       }
     ]
   },
