@@ -13,7 +13,7 @@ const MyApplication = () => {
     const [search,setSearch]=useState('')
     console.log(search)
     useEffect(()=>{
-        fetch(`http://localhost:5000/users/${email}?searchParam=${search}`)
+        fetch(`https://visa-navigator-server-zeta.vercel.app/users/${email}?searchParam=${search}`)
         .then(res=>res.json())
         .then(data=>{console.log('data',data);
             setvisas(data)
@@ -26,7 +26,7 @@ const MyApplication = () => {
             <div className='flex justify-center mb-5'>
             <input onChange={e=>setSearch(e.target.value)} type="text" placeholder="search" name='search' className="input  input-bordered w-full max-w-xs" />
             </div>
-        <div className='grid grid-cols-3 gap-6'>
+        <div className='grid md:grid-cols-3 grid-cols-1 gap-6'>
             {
                 visas.map(visa=><ApplicationCard key={visa._id} visa={visa} visas={visas} setvisas={setvisas}></ApplicationCard>)
             }

@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: ()=> fetch('http://localhost:5000/visa')
+        loader: ()=> fetch('https://visa-navigator-server-zeta.vercel.app/visa')
 
       },
       {
@@ -38,12 +38,12 @@ const router = createBrowserRouter([
       {
         path: '/allVisa',
         element:<AllVisa></AllVisa>,
-        loader: ()=> fetch('http://localhost:5000/visa')
+        loader: ()=> fetch('https://visa-navigator-server-zeta.vercel.app/visa')
       },
       {
         path:'/visaDetails/:id',
         element: <VisaDetails></VisaDetails>,
-        loader: ({params})=> fetch(`http://localhost:5000/visa/${params.id}`)
+        loader: ({params})=> fetch(`https://visa-navigator-server-zeta.vercel.app/visa/${params.id}`)
       },
     
       {
@@ -57,12 +57,12 @@ const router = createBrowserRouter([
       {
         path: '/myAddedVisa/:createdBy',
         element: <PrivateRoutes><MyAddedVisa></MyAddedVisa></PrivateRoutes>,
-        loader:({params})=> fetch(`http://localhost:5000/visa/email/${params.createdBy}`)
+        loader:({params})=> fetch(`https://visa-navigator-server-zeta.vercel.app/visa/email/${params.createdBy}`)
       },
       {
         path: 'myApplication/:email',
         element: <PrivateRoutes><MyApplication></MyApplication></PrivateRoutes>,
-        loader: ({params})=> fetch(`http://localhost:5000/users/${params.email}`)
+        loader: ({params})=> fetch(`https://visa-navigator-server-zeta.vercel.app/users/${params.email}`)
       }
     ]
   },

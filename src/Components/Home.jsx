@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Tooltip } from 'react-tooltip'
 import Banner from './Banner';
 import { NavLink, useLoaderData } from 'react-router-dom';
 import VisaCard from './VisaCard';
@@ -28,18 +27,11 @@ const Home = () => {
 
     return (
 
-        <div className={`min-h-screen ${isDarkTheme ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'}`}>
-             <section> <a
-  data-tooltip-id="my-tooltip"
-  data-tooltip-content="Hello world!"
-  data-tooltip-place="top"
->
-  ◕‿‿◕
-</a>
-<a data-tooltip-id="my-tooltip" data-tooltip-content="Hello to you too!">
-  ◕‿‿◕
-</a>
-                <TypeWriter></TypeWriter></section>
+        <div className={`min-h-screen ${isDarkTheme ? 'bg-gray-800 text-white' : ''}`}>
+             <section><TypeWriter></TypeWriter></section>
+             <div>
+            
+        </div>
             
             <header className="flex justify-end items-center p-4">
                 <p className='text-2xl mr-2 '>Mode:</p>
@@ -52,7 +44,7 @@ const Home = () => {
             </header>
             <section className="w-full"><Banner /></section>
            
-            <div className="grid md:grid-cols-3 grid-cols-2 gap-10 my-8 p-16 ">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-10 my-8 md:p-16 p-4">
                 {sortedVisas.slice(0, 6).map(visa => (
                     <VisaCard key={visa._id} visa={visa} />
                 ))}

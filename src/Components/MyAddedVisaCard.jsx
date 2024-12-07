@@ -59,7 +59,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
         applicationMethod
       }
       console.log(updateVisa)
-      fetch(`http://localhost:5000/visa/${_id}`,{
+      fetch(`https://visa-navigator-server-zeta.vercel.app/visa/${_id}`,{
         method:'PUT',
         headers: {
             'content-type':'application/json'
@@ -100,7 +100,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/visa/${_id}`, {
+              fetch(`https://visa-navigator-server-zeta.vercel.app/visa/${_id}`, {
                 method: "DELETE",
               })
                 .then((res) => res.json())
@@ -155,7 +155,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Country Image and Name */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="image"
@@ -163,7 +163,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
                             defaultValue={image}
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="countryName"
@@ -175,7 +175,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
 
                 {/* Visa Type and Processing Time */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <select
                             className="input input-bordered join-item w-full"
                             name="visaType"
@@ -186,7 +186,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
                             <option value="Official visa">Official visa</option>
                         </select>
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="processingTime"
@@ -242,7 +242,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
 
                 {/* Age Restriction and Fee */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="ageRestriction"
@@ -251,7 +251,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
                             placeholder="Age Restriction"
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="fee"
@@ -264,7 +264,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
 
                 {/* Validity and Application Method */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="validity"
@@ -272,7 +272,7 @@ const MyAddedVisaCard = ({visas, visa,setvisas}) => {
                             placeholder="Validity"
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="applicationMethod"

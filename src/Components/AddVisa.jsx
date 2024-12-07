@@ -39,7 +39,7 @@ const AddVisa = () => {
         };
         console.log(newVisa);
 
-        fetch('http://localhost:5000/visa',{
+        fetch('https://visa-navigator-server-zeta.vercel.app/visa',{
             method: "POST",
             headers: {
                 'content-type':'application/json'
@@ -60,19 +60,19 @@ const AddVisa = () => {
         })
     }
     return (
-        <div className="bg-gray-200 p-24">
+        <div className="bg-gray-200 md:p-24 p-8">
             <h2 className="font-bold text-3xl">Add a Visa</h2>
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Country Image and Name */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="image"
                             placeholder="Country Image URL"
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="countryName"
@@ -83,7 +83,7 @@ const AddVisa = () => {
 
                 {/* Visa Type and Processing Time */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <select
                             className="input input-bordered join-item w-full"
                             name="visaType"
@@ -93,7 +93,7 @@ const AddVisa = () => {
                             <option value="Official visa">Official visa</option>
                         </select>
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="processingTime"
@@ -105,7 +105,7 @@ const AddVisa = () => {
                 {/* Required Documents */}
                 <div>
                     <p className="font-bold">Required Documents:</p>
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 space-x-2">
                         <label>
                             <input
                                 type="checkbox"
@@ -144,7 +144,7 @@ const AddVisa = () => {
 
                 {/* Age Restriction and Fee */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="ageRestriction"
@@ -152,7 +152,7 @@ const AddVisa = () => {
                             placeholder="Age Restriction"
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="fee"
@@ -164,14 +164,14 @@ const AddVisa = () => {
 
                 {/* Validity and Application Method */}
                 <div className="md:flex justify-between gap-10">
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="validity"
                             placeholder="Validity"
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:w-1/2">
                         <input
                             className="input input-bordered join-item w-full"
                             name="applicationMethod"

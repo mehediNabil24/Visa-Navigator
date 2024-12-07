@@ -32,7 +32,7 @@ const VisaDetails = () => {
       applicationMethod: applicationMethod,
       name: firstName + " " + lastName,
     };
-    fetch("http://localhost:5000/users", {
+    fetch("https://visa-navigator-server-zeta.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

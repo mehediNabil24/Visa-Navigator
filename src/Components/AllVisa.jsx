@@ -7,7 +7,7 @@ const AllVisa = () => {
     const [visas, setVisas] = useState(loadedVisa);
     const [selectedType, setSelectedType] = useState('All');
 
-    // Extract unique visa types
+  
     const visaTypes =['All']
 
     loadedVisa.forEach(visa=> {
@@ -16,7 +16,7 @@ const AllVisa = () => {
         }
     })
 
-    console.log("visa types",visaTypes)
+    // console.log("visa types",visaTypes)
     // const visaTypes = ['All', ...new Set(loadedVisa.map((visa) => visa.visaType))];
 
     const handleFilterChange = (event) => {
@@ -32,7 +32,7 @@ const AllVisa = () => {
 
     return (
         <div>
-            {/* Dropdown for filtering */}
+            
             <div className="mb-5">
                 <label htmlFor="visaType" className="mr-3">Filter by Visa Type:</label>
                 <select
@@ -49,8 +49,8 @@ const AllVisa = () => {
                 </select>
             </div>
 
-            {/* Grid displaying visas */}
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
+            
+            <div className="grid md:grid-cols-4 grid-cols-1 gap-5">
                 {visas.map((visa) => (
                     <VisaCard key={visa._id} visa={visa}></VisaCard>
                 ))}
