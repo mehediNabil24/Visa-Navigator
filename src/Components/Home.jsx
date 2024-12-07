@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Tooltip } from 'react-tooltip'
 import Banner from './Banner';
 import { NavLink, useLoaderData } from 'react-router-dom';
 import VisaCard from './VisaCard';
@@ -28,7 +29,17 @@ const Home = () => {
     return (
 
         <div className={`min-h-screen ${isDarkTheme ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'}`}>
-             <section><TypeWriter></TypeWriter></section>
+             <section> <a
+  data-tooltip-id="my-tooltip"
+  data-tooltip-content="Hello world!"
+  data-tooltip-place="top"
+>
+  ◕‿‿◕
+</a>
+<a data-tooltip-id="my-tooltip" data-tooltip-content="Hello to you too!">
+  ◕‿‿◕
+</a>
+                <TypeWriter></TypeWriter></section>
             
             <header className="flex justify-end items-center p-4">
                 <p className='text-2xl mr-2 '>Mode:</p>
