@@ -7,7 +7,7 @@ const MyAddedVisa = () => {
     const loadedVisas = useLoaderData();
     const [visas,setvisas] = useState(loadedVisas)
     return (
-        <div className='grid md:grid-cols-3 grid-cols-1 gap-8'>
+        <div className='grid md:grid-cols-3 grid-cols-1 gap-8 '>
             {
                 visas.map(visa=><MyAddedVisaCard visas={visas} setvisas={setvisas} key={visa._id} visa={visa}></MyAddedVisaCard>)
             }

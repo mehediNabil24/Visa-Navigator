@@ -56,7 +56,7 @@ const ApplicationCard = ({visa, visas,setvisas}) => {
 
 
     return (
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100  shadow-xl">
       <figure>
         <img src={image} alt="Visa pic" />
       </figure>
